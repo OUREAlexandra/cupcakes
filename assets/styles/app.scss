@@ -1,9 +1,7 @@
-// body {
-//     background-color: blue;
-// }
-
-// customize some Bootstrap variables
-$primary: darken(#428bca, 20%);
-
-// the ~ allows you to reference things in node_modules
+@import 'variables.scss';
 @import "~bootstrap/scss/bootstrap";
+
+
+.bodyy {
+    background-color: pink;
+}
