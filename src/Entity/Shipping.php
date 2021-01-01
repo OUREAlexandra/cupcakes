@@ -20,7 +20,7 @@ class Shipping
     private $id;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="float")
      */
     private $cost;
 

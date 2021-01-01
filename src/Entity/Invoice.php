@@ -21,7 +21,7 @@ class Invoice
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="invoices")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $uuser;
 
