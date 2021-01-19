@@ -1,21 +1,47 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Yummy cupcakes{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-    {# <img src="{{ asset('build/Capture6.png') }}" alt=""/> #}
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/home/wilder/Documents/training/cupcakes/cupcakes/src/Controller/HomeController.php'|file_link(0) }}">src/Controller/HomeController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/home/wilder/Documents/training/cupcakes/cupcakes/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li>
-    </ul>
+<div class="container-fluid">
+    <form id="content">
+  <input type="text" name="input" class="input">
+  <button type="reset" class="search"></button>
+</form>
 </div>
+<div class="container-fluid mt-5">
+    <div class="row align-items-center">
+        <div class="col-lg-7 col-md-12 col-sm-10 left-block">
+            <img src="https://cdn.pixabay.com/photo/2014/03/04/15/36/cupcake-279523_960_720.jpg" class="img-fluid" alt="les meilleurs cupcakes de Paris">
+        </div>
+        <div class="col-lg-5 col-md-5 col-sm-10 pl-5 right-block">
+            <h1 class="text-center block-title">À CHAQUE ENVIE<br>SON CUPCAKE</h1>
+            <p class="text-center mt-3 block-paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, cupiditate? Corporis quas est, hic autem maxime voluptatem dignissimos odit, a harum magnam officiis sunt! Et autem maxime quasi delectus esse!</p>
+            <button type="button" class="btn btn-outline-danger btn-lg mt-3 all-buttons text-dark">Nos cupcakes</button>
+        </div>
+    </div>
+</div>
+<div class="bg-section p-5 mt-5">
+    <p class="text-center pb-5 baseline-home block-title">Nos yummies catégories</p>
+    <div class="row pt-5">
+        {% for category in categories %}
+        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12 mx-auto">
+            <div class="card-border">
+                <a href="" class="link-for-show-img">
+                    <img src="{{category.url}}"
+                        class="card-img-top" alt="">
+                    <div class="text-right color-provider mr-3">
+                        <button class="btn pl-3 pr-3">
+                            <h3 class="border-style-home style-home-name p-3 ">
+                                {{category.name}}
+                            </h3>
+                        </button>
+                    </div>
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
 {% endblock %}

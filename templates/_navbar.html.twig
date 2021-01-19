@@ -1,24 +1,17 @@
-<nav class="navbar navbar-dark bg-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Features</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Pricing</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-  </nav>
+<nav class="navbar navbar-expand-lg nav-bar">
+  <a class="navbar-brand nav-bar-white title-navbar logo" href="{{path('home')}}">Yummy cupcakes</a>
+  <ul class="navbar-nav ml-auto float-right">
+    <li class="nav-item active">
+      <a class="nav-link nav-bar-white title-navbar" href="{{path('products')}}">Nos cupcakes</a>
+      <span class="sr-only"></span>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link nav-bar-white title-navbar" href="">Notre Yummy story</a>
+      <!--ajouter lien guide de survie-->
+    </li>
+    <li class="nav-item">
+      <a class="nav-link nav-bar-white title-navbar" href="">Nous contacter</a>
+      <!--ajouter lien guide de survie-->
+    </li>
+  </ul>
+</nav>

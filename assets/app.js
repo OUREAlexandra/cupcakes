@@ -9,7 +9,7 @@
 import './styles/app.scss';
 
 // start the Stimulus application
-import './bootstrap';
+import 'bootstrap';
 
 const $ = require('jquery');
 // this "modifies" the jquery module: adding behavior to it
@@ -23,3 +23,15 @@ require('bootstrap');
 $(document).ready(function() {
     $('[data-toggle="popover"]').popover();
 });
+
+// -
+function expand() {
+    $(".search").toggleClass("close");
+    $(".input").toggleClass("square");
+    if ($('.search').hasClass('close')) {
+      $('input').focus();
+    } else {
+      $('input').blur();
+    }
+  }
+  $('button').on('click', expand);
