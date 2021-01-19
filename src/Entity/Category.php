@@ -29,6 +29,11 @@ class Category
      */
     private $products;
 
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $url;
+
     public function __construct()
     {
         $this->products = new ArrayCollection();
@@ -77,6 +82,23 @@ class Category
                 $product->setCategory(null);
             }
         }
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->name;
+    }
+
+    public function getUrl(): ?string
+    {
+        return $this->url;
+    }
+
+    public function setUrl(string $url): self
+    {
+        $this->url = $url;
 
         return $this;
     }

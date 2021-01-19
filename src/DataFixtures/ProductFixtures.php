@@ -38,6 +38,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
             $product->setPrice($faker->randomFloat($nbMaxDecimals = 2, $min = 2, $max = 5.5));
             $product->setDescription($faker->text($maxNbChars = 200));
             $product->setIsActivated((bool)rand(0, 1));
+            $product->setImage('https://blog.feeriecake.fr/wp-content/uploads/2020/02/cupcake-chocolat-lindor-2.jpg');
             $product->setCategory($this->getReference('category_' . rand(0,4)));
             $manager->persist($product);
             $this->addReference('product_' .$key, $product);
