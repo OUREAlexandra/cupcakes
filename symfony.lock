@@ -111,6 +111,12 @@
     "jms/metadata": {
         "version": "2.4.0"
     },
+    "knplabs/knp-components": {
+        "version": "v3.0.0"
+    },
+    "knplabs/knp-paginator-bundle": {
+        "version": "v5.4.2"
+    },
     "laminas/laminas-code": {
         "version": "3.5.1"
     },
@@ -167,6 +173,9 @@
         "files": [
             "config/packages/sensio_framework_extra.yaml"
         ]
+    },
+    "snapappointments/bootstrap-select": {
+        "version": "v1.13.18"
     },
     "symfony/asset": {
         "version": "v5.2.1"
@@ -580,9 +589,6 @@
         "files": [
             "config/packages/vich_uploader.yaml"
         ]
-    },
-    "webimpress/safe-writer": {
-        "version": "2.1.0"
     },
     "webmozart/assert": {
         "version": "1.9.1"

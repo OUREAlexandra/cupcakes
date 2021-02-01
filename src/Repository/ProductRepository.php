@@ -3,8 +3,11 @@
 namespace App\Repository;
 
 use App\Entity\Product;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use App\Data\SearchProductData;
 use Doctrine\Persistence\ManagerRegistry;
+use Knp\Component\Pager\PaginatorInterface;
+use Knp\Component\Pager\Pagination\PaginationInterface;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @method Product|null find($id, $lockMode = null, $lockVersion = null)
@@ -14,9 +17,42 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class ProductRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
+    public function __construct(ManagerRegistry $registry, PaginatorInterface $paginator)
     {
         parent::__construct($registry, Product::class);
+        $this->paginator = $paginator;
+    }
+
+    /**
+     * @return PaginationInterface
+     */
+    public function searchProduct(SearchProductData $search): PaginationInterface
+    {
+        $query = $this
+            ->createQueryBuilder('product')
+            ->from($this->_entityName, 'p')
+            ->innerJoin('product.category', 'category');
+
+        if (!empty($search->category)) {
+            $query = $query
+                ->andWhere('category.id IN (:category)')
+                ->setParameter('category', $search->category);
+        }
+
+        if (!empty($search->q)) {
+            $query = $query
+                ->andWhere('product.name LIKE :q 
+                OR product.description LIKE :q
+                OR category.name LIKE :q')
+                ->setParameter('q', "%{$search->q}%");
+        }
+
+        $query = $query->getQuery()->getResult();
+        return $this->paginator->paginate(
+            $query,
+            1,
+            12
+        );
     }
 
     // /**

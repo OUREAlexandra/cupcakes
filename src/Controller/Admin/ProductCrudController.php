@@ -37,6 +37,7 @@ class ProductCrudController extends AbstractCrudController
                 ->setFormType(VichImageType::class)
                 ->onlyOnForms(),
             ImageField::new('image')
+                ->setBasePath('/uploads/images')
                 ->hideOnForm(),
             VichImageField::new('imageFile')->onlyOnForms()
         ];

@@ -9,12 +9,6 @@
             <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
         {% endif %}
 
-        {% if app.user %}
-            <div class="mb-3">
-                Bienvenue {{ app.user.username }}, <a href="{{ path('app_logout') }}">Se déconnecter</a>
-            </div>
-        {% endif %}
-
         <label for="inputEmail">Email</label>
         <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus>
         <label for="inputPassword">Mot de passe</label>
@@ -29,13 +23,13 @@
                 </label>
             </div>
         <div class="text-center button-login">
-            <button class="btn btn-lg bg-dark text-light" type="submit">Se connecter</button>
+            <button class="btn btn-lg btn-success registration-button" type="submit">Se connecter</button>
         </div>
         <div class="text-center link-login">
-            <a href="{{path('register')}}" class="text-dark">Pas encore de compte ? S'inscrire</a>
+            <a href="{{path('app_register')}}">Pas encore de compte ? S'inscrire</a>
         </div>
         <div class="text-center link-login">
-            <a href="#" class="text-dark">Mot de passe oublié ?</a>
+            <a href="">Mot de passe oublié ?</a>
         </div>
     </form>
 </div>
