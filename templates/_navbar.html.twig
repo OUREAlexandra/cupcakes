@@ -1,20 +1,58 @@
-<nav class="navbar navbar-dark navbar-expand-lg bg-dark py-lg-3" id="mainNav">
-  <div class="container-fluid"><a class="navbar-brand text-uppercase d-lg-none text-expanded" href="#">Yummy cupcakes</a><button data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-          <li class="nav-item mr-5">
-            <a class="nav-link active" aria-current="page" href="#">Accueil</a>
-          </li>
-          <li class="nav-item mr-5">
-            <a class="nav-link" href="#">Nos cupcakes</a>
-          </li>
-          <li class="nav-item mr-5">
-            <a class="nav-link" href="#">Notre Yummy Cupcakes story</a>
-          </li>
-          <li class="nav-item mr-5">
-            <a class="nav-link" href="#">Nous contacter</a>
-          </li>
-        </ul>
+<nav class="navbar navbar-expand-lg nav-bar">
+  <a class="navbar-brand nav-bar-white title-navbar logo" href="{{path('home')}}">Yummy cupcakes</a>
+  <ul class="navbar-nav ml-auto float-right">
+    <li class="nav-item active">
+      <a class="nav-link nav-bar-white title-navbar" href="{{path('products')}}">Nos cupcakes</a>
+      <span class="sr-only"></span>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link nav-bar-white title-navbar" href="">Notre Yummy story</a>
+      <!--ajouter lien guide de survie-->
+    </li>
+    <li class="nav-item">
+      <a class="nav-link nav-bar-white title-navbar" href="">Nous contacter</a>
+      <!--ajouter lien guide de survie-->
+    </li>
+    {% if is_granted('ROLE_BUYER') and app.user.isActivated == true %}
+    <li class="nav-item nav-link">
+      {% if app.session.get('panier') %}
+      <a href="">
+        <i class="fab fa-opencart text-white"></i>
+        <span class="badge badge-danger color-badge">{{ app.session.get('count') }}</span>
+      </a>
+      {% else %}
+      <a href="">
+        <i class="fab fa-opencart text-white"></i>
+      </a>
+      {% endif %}
+    </li>
+    <li class="nav-item dropdown ">
+      <a class="nav-item dropdown-toggle btn btn-light text-center nav-link-button" id="dropdown1"
+        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="far fa-user"></i>
+      </a>
+      <div class="dropdown-menu dropdown-menu-right text-center">
+        <a href="">Mon compte</a>
+        <br>
+        {% if is_granted('ROLE_BUYER') and app.user.isActivated == true %}
+        <a href="">Mes commandes</a>
+        {% endif %}
+        <br>
+        <a href="{{path('app_logout')}}">
+          <i class="fas fa-sign-out-alt"></i>
+          Se déconnecter</a>
       </div>
-  </div>
+    </li>
+    {% elseif is_granted('ROLE_ADMIN') %}
+    <a href="{{path('admin')}}" class="btn btn-light text-center nav-item nav-link-button mr-1">
+      <i class="far fa-user"></i>
+      Administration</a>
+    <a href="{{path('app_logout')}}" class="btn btn-light text-center nav-item nav-link-button">
+      <i class="fas fa-sign-out-alt"></i>
+    </a>
+    {% else %}
+    <a href="{{path('app_login')}}" class=" btn btn-light text-center nav-item nav-link-button mr-1">Connectez-vous</a>
+    <a href="{{path('app_register')}}" class="btn btn-light text-center nav-item nav-link-button">Inscrivez-vous</a>
+    {% endif %}
+  </ul>
 </nav>

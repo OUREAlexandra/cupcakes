@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+{% block metadescription %}{{style.description |slice(0, 200)}}
+{% endblock %}
+{% block title %} Catégories - {{style.name}} {% endblock %}
+
+{% block body %}
+
+<h1 class="block-title">Nos yumiies catégories</h1>
+{% endblock %}

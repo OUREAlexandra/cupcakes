@@ -1,0 +1,36 @@
+easy_admin:
+    entities:
+        Product:
+            class: App\Entity\Product
+            label: "Produits"
+            list:
+                fields:
+                    - { property: 'image', type: 'image', base_path: '%app.path.product_images%' }
+            form:
+                fields:
+                    - { property: 'imageFile', type: 'vich_image' }
+            show:
+                fields: 
+                    - { property: 'image', type: 'image', base_path: '%app.path.product_images%' }
+        Image:
+            class: App\Entity\Image
+            label: "Images"
+            list:
+                actions:
+                    - { name: 'new', icon: 'plus', label: 'Ajouter', css_class: 'btn btn-primary' }
+                    - { name: 'show', label: false, icon: 'eye', css_class: 'btn see-btn' }
+                    - { name: 'edit', icon: 'pencil', label: false, css_class: 'btn edit-btn' }
+                    - { name: 'delete', icon: 'trash-alt', label: false, css_class: 'btn delete-btn' }
+                fields:
+                    - { property: 'id', label: 'ID'}
+                    - { property: 'image', type: 'image', base_path: '%app.path.product_images%' }
+            form:
+                title: "Ajouter une image"
+                fields:
+                    - { property: 'imageFile', type: 'file' }
+
+            show:
+                title: 'Image'
+                fields: 
+                    - { property: 'id', label: 'ID'}
+                    - { property: 'image', type: 'image', base_path: '%app.path.product_images%' }
