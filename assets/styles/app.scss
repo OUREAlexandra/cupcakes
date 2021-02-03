@@ -2,6 +2,15 @@
 @import "~bootstrap/scss/bootstrap";
 
 
+a {
+  color: inherit;
+}
+
+a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+
 /*NAVBAR*/
 .nav-bar{
     background-color: #c72c48 ;
@@ -10,6 +19,15 @@
 .title-navbar{
     color: whitesmoke;
     font-family: 'Lobster', cursive;
+}
+.banner{
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 /*FIN NAVBAR*/
 
@@ -300,8 +318,160 @@
     color: #cccccc;
   }
   
-  
-  
+/*ALL PRODUCTS_______________________________________________________________________*/
+.card-filter {
+  border: 1px solid whitesmoke;
+  -webkit-box-shadow: 2px 10px 13px -7px #000000, 3px 3px 3px -1px rgba(0,0,0,0); 
+  box-shadow: 2px 10px 13px -7px #000000, 3px 3px 3px -1px rgba(0,0,0,0);
+}
+
+.filter-title{
+  font-family: 'Lobster', cursive;
+  font-size: 35px;
+}
+
+.card-wrapper{
+  box-shadow: 2px 10px 13px -7px #000000, 3px 3px 3px -1px rgba(0,0,0,0);
+}
+
+.product-name{
+  color: #c72c48;
+  font-family: 'Lobster', cursive;
+}
+
+.product-price{
+  font-weight: bold;
+  font-family: 'Dancing Script', cursive;
+}
+
+.product-description{
+  font-family: 'Lobster', cursive;
+  font-size: 15px;
+}
+/*FIN ALL PRODUCTS_______________________________________________________________________*/
+
+
+/*ONE PRODUCTS_______________________________________________________________________*/
+.one-product-row{
+  margin-left: 45vh; 
+}
+
+.one-product-img {
+  max-width: 100%;
+  filter: drop-shadow(1px 1px 3px $color-secondary);
+}
+
+/* ----- Product Section ----- */
+.one-product {
+display: grid;
+grid-template-columns: 0.9fr 1fr;
+margin: auto;
+padding: 2.5em 0;
+min-width: 600px;
+background-color: white;
+border-radius: 5px;
+}
+
+/* ----- Photo Section ----- */
+.product__photo {
+position: relative;
+}
+
+.photo-container {
+position: absolute;
+left: -2.5em;
+display: grid;
+grid-template-rows: 1fr;
+width: 100%;
+height: 100%;
+border-radius: 6px;
+box-shadow: 4px 4px 25px -2px rgba(0, 0, 0, 0.3);
+}
+
+.photo-main {
+border-radius: 6px 6px 0 0;
+background-color: whitesmoke;
+background: whitesmoke;
+
+.controls {
+display: flex;
+justify-content: space-between;
+padding: 0.8em;
+color: #fff;
+}
+
+.one-product-img {
+position: absolute;
+left: -3.5em;
+top: 2em;
+max-width: 110%;
+filter: saturate(150%) contrast(120%) hue-rotate(10deg)
+  drop-shadow(1px 20px 10px rgba(0, 0, 0, 0.3));
+}
+}
+
+/* ----- Informations Section ----- */
+.product__info {
+padding: 0.8em 0;
+}
+
+.one-product-title {
+h1 {
+  color: #c72c48;
+  font-family: 'Lobster', cursive;
+  font-size: 35px;
+}
+}
+
+.one-product-price {
+  font-weight: bold;
+  font-family: 'Dancing Script', cursive;
+
+span {
+padding-left: 0.15em;
+font-size: 2.9em;
+}
+}
+/*FIN ONE PRODUCTS_______________________________________________________________________*/
+
+
+
+/*CART_______________________________________________________________________*/
+.block-cart-title{
+  color: #c72c48;
+  font-family: 'Lobster', cursive;
+}
+
+.psst-description{
+  font-family: 'Lobster', cursive;
+  font-size: 25px;
+}
+
+.total-description{
+  font-family: 'Lobster', cursive;
+  font-size: 25px;
+  color: #c72c48;
+}
+
+.payment{
+  font-weight: bold;
+  font-family: 'Dancing Script', cursive;
+  font-size: 30px;
+}
+/*CART_______________________________________________________________________*/
+
+
+/*BUTTON FILTER_______________________________________________________________________*/
+.btn-filtre{
+  background-color: #c72c48;
+  color: whitesmoke;
+  font-size: 20px;
+  font-family: 'Dancing Script', cursive;
+}
+
+/*BUTTON FILTER_______________________________________________________________________*/
+
+
   /* ANIMATIONS */
   
   /* Simple CSS3 Fade-in-down Animation */
@@ -421,3 +591,21 @@
     background-color: #c72c48 ;
 }
 /*FIN FOOTER*/
+
+
+@media all and (min-width: 992px) { 
+  .navbar .nav-item .dropdown-menu{ display: none; }
+  .navbar .nav-item:hover .dropdown-menu{ display: block; }
+  .navbar .nav-item .dropdown-menu{ margin-top:0; }
+} 
+@media screen and (min-width: 768px) and (max-width: 785px) {
+  .margin-responsive {
+      margin-left: 15px;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .mobile-nav-margin {
+      margin-top: 10px;
+  }
+}
