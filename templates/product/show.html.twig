@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+{% block metadescription %}{{product.description |slice(0, 200)}}{% endblock %}
+{% block title %}{{product.name}}{% endblock %}
+{% block body %}
+<div class="container container-one-product mt-5">
+    <div class="row one-product-row">
+        <div class="col-lg-6">
+            <section class="one-product mb-3">
+                <div class="product__photo">
+                    <div class="photo-container">
+                        <div class="photo-main">
+                            <img  class="mt-2 one-product-img" src="{{ product.image }}"
+                                alt="{{ product.name }}">
+                        </div>
+                    </div>
+                </div>
+                <div class="product__info">
+                    <div class="one-product-title mt-5 text-center">
+                        <h1>{{ product.name }}</h1>
+                    </div>
+                    <div class="one-product-price mt-5 text-center">
+                        <span>{{ product.price }}€</span>
+                    </div>
+                    <div class="mt-5">
+                        <p class="product-description text-center">{{ product.description }}</p>
+                    </div>
+                    <div class="text-center">
+                        <a href="{{path('cart_add', {'id' : product.id})}}" class="btn-filtre btn text-center nav-item nav-link-button">
+                            Ajouter<i class="fab fa-opencart text-white"></i></a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

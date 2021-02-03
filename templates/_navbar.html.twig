@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg nav-bar">
+<nav class="navbar navbar-expand-lg nav-bar fixed-top" id="banner">
   <a class="navbar-brand nav-bar-white title-navbar logo" href="{{path('home')}}">Yummy cupcakes</a>
   <ul class="navbar-nav ml-auto float-right">
     <li class="nav-item active">
@@ -13,15 +13,15 @@
       <a class="nav-link nav-bar-white title-navbar" href="">Nous contacter</a>
       <!--ajouter lien guide de survie-->
     </li>
-    {% if is_granted('ROLE_BUYER') and app.user.isActivated == true %}
+    {% if is_granted('ROLE_BUYER') %}
     <li class="nav-item nav-link">
       {% if app.session.get('panier') %}
-      <a href="">
+      <a href="{{path('cart_index')}}">
         <i class="fab fa-opencart text-white"></i>
         <span class="badge badge-danger color-badge">{{ app.session.get('count') }}</span>
       </a>
       {% else %}
-      <a href="">
+      <a href="{{path('cart_index')}}">
         <i class="fab fa-opencart text-white"></i>
       </a>
       {% endif %}
@@ -34,7 +34,7 @@
       <div class="dropdown-menu dropdown-menu-right text-center">
         <a href="">Mon compte</a>
         <br>
-        {% if is_granted('ROLE_BUYER') and app.user.isActivated == true %}
+        {% if is_granted('ROLE_BUYER') %}
         <a href="">Mes commandes</a>
         {% endif %}
         <br>
@@ -51,8 +51,8 @@
       <i class="fas fa-sign-out-alt"></i>
     </a>
     {% else %}
-    <a href="{{path('app_login')}}" class=" btn btn-light text-center nav-item nav-link-button mr-1">Connectez-vous</a>
-    <a href="{{path('app_register')}}" class="btn btn-light text-center nav-item nav-link-button">Inscrivez-vous</a>
+    <a href="{{path('app_login')}}" class="btn btn-light text-center nav-item nav-link-button mr-1">Connectez-vous</a>
+    <a href="{{path('app_register')}}" class="btn btn-light text-center nav-item nav-link-button mobile-nav-margin">Inscrivez-vous</a>
     {% endif %}
   </ul>
 </nav>

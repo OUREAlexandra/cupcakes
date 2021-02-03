@@ -19,6 +19,7 @@ require('bootstrap');
 // or you can include specific pieces
 // require('bootstrap/js/dist/tooltip');
 // require('bootstrap/js/dist/popover');
+require('bootstrap-select/dist/js/bootstrap-select');
 
 $(document).ready(function() {
     $('[data-toggle="popover"]').popover();
@@ -35,3 +36,20 @@ function expand() {
     }
   }
   $('button').on('click', expand);
+
+  // filter : custom selectAll and unSelectAll
+$ ( '.selectpicker' ) .selectpicker ( { 
+  selectAllText : 'Tous' , 
+  deselectAllText : '<i class="fas fa-times"></i>' 
+} ) ;
+
+$(document).on("scroll", function(){
+  if
+    ($(document).scrollTop() > 86){
+    $("#banner").addClass("shrink");
+  }
+  else
+  {
+    $("#banner").removeClass("shrink");
+  }
+});

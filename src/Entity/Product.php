@@ -81,6 +81,11 @@ class Product
      */
     private $commands;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $slug;
+
     public function __construct()
     {
         $this->invoice = new ArrayCollection();
@@ -240,6 +245,18 @@ class Product
         if ($this->commands->removeElement($command)) {
             $command->removeProduct($this);
         }
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
 
         return $this;
     }

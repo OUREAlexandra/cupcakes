@@ -5,11 +5,19 @@ namespace App\DataFixtures;
 use App\Entity\Product;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use App\Service\Slugify;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Faker;
 
 class ProductFixtures extends Fixture implements DependentFixtureInterface
 {
+    private $slugify;
+
+    public function __construct(Slugify $slugify)
+    {
+        $this->slugify = $slugify;
+    }
+    
     public const PRODUCTS = [
         'Le céréaliers',
         'Le m\'as-tu vu',
@@ -38,6 +46,8 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
             $product->setPrice($faker->randomFloat($nbMaxDecimals = 2, $min = 2, $max = 5.5));
             $product->setDescription($faker->text($maxNbChars = 200));
             $product->setIsActivated((bool)rand(0, 1));
+            $name = $this->slugify->generate($product->getName());
+            $product->setSlug($name);
             $product->setImage('https://blog.feeriecake.fr/wp-content/uploads/2020/02/cupcake-chocolat-lindor-2.jpg');
             $product->setCategory($this->getReference('category_' . rand(0,4)));
             $manager->persist($product);
